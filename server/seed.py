@@ -13,9 +13,14 @@ def make_movies():
 
     Movie.query.delete()
     
+    genres = ["Sci-Fi", "Action", "Adventure", "Comedy", "Drama", "Horror", "Romance"]
+
     movies = []
     for i in range(50):
-        m = Movie(title=fake.sentence(nb_words=4).title())
+        m = Movie(
+            title=fake.sentence(nb_words=4).title(),
+            genre=rc(genres)
+        )
         movies.append(m)
 
     db.session.add_all(movies)
